@@ -32,8 +32,6 @@ Fullstack web-приложение интернет-банка.
 - React Router
 - MobX
 - Axios
-- SCSS
-- SVG-компоненты
 
 ### Backend
 
@@ -42,6 +40,5 @@ Fullstack web-приложение интернет-банка.
 - PostgreSQL
 - Sequelize
 - JWT
-- bcrypt
 - Nodemailer
 - Google OAuth2
