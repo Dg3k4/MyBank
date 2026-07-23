@@ -1,0 +1,13 @@
+export const LANDING_ROUTE = "/"
+export const ADMIN_ROUTE = "/admin"
+export const LOGIN_ROUTE = "/login"
+export const REGISTRATION_ROUTE = "/registration"
+export const PROFILE_ROUTE = "/profile"
+export const PIN_ROUTE = "/pin"
+export const DASHBOARD_ROUTE = "/dashboard"
+export const ACCOUNTS_ROUTE = "/accounts"
+export const TRANSFER_ROUTE = "/transfer"
+export const TRANSACTIONS_ROUTE = "/transactions"
+export const CARD_ROUTE = "/card"
+
+export const REACT_APP_API_URL = "http://localhost:4132/api"

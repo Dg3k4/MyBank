@@ -1,0 +1,12 @@
+button {
+    border-radius: 0.35rem;
+    border: var(--color-background) 2px solid;
+    background-color: transparent;
+    font-family: "Manrope", "sans-serif";
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--color-background);
+    transition: var(--transition-standart);
+    user-select: none;
+    cursor: pointer;
+}

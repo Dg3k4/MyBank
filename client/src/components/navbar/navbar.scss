@@ -1,0 +1,250 @@
+.navbar {
+    width: 100%;
+    background-color: var(--color-primary);
+    border-bottom: 1px solid var(--color-primary);
+    transition: 0.3s ease;
+    font-family: "Manrope", sans-serif;
+    font-weight: var(--font-weight-standart);
+    font-size: 1.35rem;
+    z-index: 5;
+    position: sticky;
+    top: 0;
+
+    &__content {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        align-items: center;
+        height: 100px;
+        max-width: 80rem;
+        margin: 0 auto;
+        padding: 0 1rem;
+    }
+
+    &.scrolled {
+        background-color: var(--color-background);
+        border-bottom: 1px solid var(--color-border);
+
+        .navbar__logo {
+            color: var(--color-text);
+
+            &:hover {
+                .navbar__logo__pin {
+                    filter: drop-shadow(0 0 1rem var(--color-primary));
+                    transition: var(--transition-standart);
+                }
+
+                .navbar__logo__name {
+                    filter: drop-shadow(0 0 1rem var(--color-text-dim));
+                    transition: var(--transition-standart);
+                }
+            }
+
+            &__pin {
+                fill: var(--color-primary);
+            }
+        }
+
+        .navbar__nav__item {
+            color: var(--color-text);
+            filter: drop-shadow(0 0 0.5rem var(--color-shadow));
+
+            &:hover {
+                filter: drop-shadow(0 0 1rem var(--color-text-dim));
+            }
+
+            &::after {
+                background-color: var(--color-text);
+            }
+            &:hover::after,
+            &:focus::after {
+                background-color: var(--color-text);
+                filter: drop-shadow(0 0 1rem var(--color-text-dim));
+            }
+        }
+
+        .navbar__actions {
+            &__theme__icon {
+                color: var(--color-text);
+                transition: var(--transition-standart);
+                overflow: visible;
+
+                svg,
+                path,
+                circle {
+                    transition: var(--transition-standart);
+                    fill: var(--color-background);
+                }
+
+                &:hover {
+                    svg,
+                    path,
+                    circle {
+                        z-index: 100;
+                        transition: var(--transition-standart);
+                        fill: var(--color-text);
+                        filter: drop-shadow(0 0 2rem var(--color-text));
+                    }
+                }
+            }
+
+            .myButton {
+                color: var(--color-text);
+                border-color: var(--color-primary);
+                background-color: var(--color-primary);
+
+                &:hover {
+                    filter: drop-shadow(0 0 0.5rem var(--color-primary));
+                }
+            }
+        }
+    }
+
+    &__logo {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        margin-right: auto;
+        font-family: "Space Grotesk", sans-serif;
+        color: var(--color-background);
+        font-size: 2rem;
+        font-weight: 600;
+        position: relative;
+
+        &:hover {
+
+            .navbar__logo__pin {
+                filter: drop-shadow(0 0 1rem var(--color-shadow));
+                transition: var(--transition-standart);
+            }
+
+            .navbar__logo__name {
+                text-shadow: 0 0 1rem var(--color-shadow);
+                transition: var(--transition-standart);
+            }
+        }
+
+        &__name {
+            transition: var(--transition-standart);
+        }
+
+        &__pin {
+            height: 3.5rem;
+            width: 3.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            fill: var(--color-background);
+            transition: var(--transition-standart);
+        }
+    }
+
+    &__nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+
+        &__item {
+            position: relative;
+            text-decoration: none;
+            color: var(--color-background);
+            transition: 0.3s ease;
+
+            &:hover {
+                text-shadow: 0 0 1rem var(--color-background);
+            }
+
+            &::after {
+                content: "";
+                position: absolute;
+                left: 0;
+                bottom: -0.3rem;
+                width: 0;
+                height: 2px;
+                background-color: var(--color-background);
+                transform-origin: center;
+                transition: var(--transition-standart);
+            }
+            &:hover::after,
+            &:focus::after {
+                width: 100%;
+                background-color: var(--color-background-substrate);
+                box-shadow: 0 0 2rem var(--color-shadow);
+            }
+        }
+    }
+
+    &__actions {
+        height: 3rem;
+        display: flex;
+        margin-left: auto;
+        align-items: center;
+
+        &__theme {
+            position: relative;
+            height: 3rem;
+            width: 3rem;
+            color: var(--color-background);
+            transition: 0.3s ease;
+            margin: 0 0.75rem;
+
+            &:hover {
+                color: var(--color-background);
+            }
+
+            &__icon {
+                cursor: pointer;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                transition: var(--transition-standart);
+                animation: theme-icon-appear 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+                border-radius: 100%;
+
+                svg,
+                path,
+                circle {
+                    transition: var(--transition-standart);
+                    fill: var(--color-primary);
+                }
+
+                &:hover {
+                    transition: var(--transition-standart);
+                    filter: drop-shadow(0 0 0.5rem var(--color-shadow));
+
+                    svg,
+                    path,
+                    circle {
+                        transition: var(--transition-standart);
+                        fill: var(--color-background);
+                    }
+                }
+            }
+        }
+
+        .myButton {
+            height: 85%;
+            width: 8rem;
+
+            &:hover {
+                color: var(--color-primary);
+                background-color: var(--color-background);
+                filter: drop-shadow(0 0 1.5rem var(--color-shadow));
+            }
+        }
+    }
+}
+
+@keyframes theme-icon-appear {
+    from {
+        opacity: 0;
+        transform: scale(0.65) rotate(0)
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) rotate(360deg);
+    }
+}

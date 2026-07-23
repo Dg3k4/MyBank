@@ -1,0 +1,16 @@
+.pattern {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    z-index: 0;
+    pointer-events: none;
+    margin: 0 auto;
+    display: flex;
+    justify-content: right;
+
+    &__right {
+        width: 40vw;
+        height: 400%;
+        color: var(--color-border);
+    }
+}

@@ -1,0 +1,24 @@
+@import url(https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Space+Grotesk:wght@300..700&display=swap);
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body.modal-open {
+    position: relative;
+    overflow: hidden;
+}
+
+#root {
+    position: relative;
+    height: 310vh;
+}
+
+main {
+    position: relative;
+    height: 100%;
+    background-color: var(--color-background);
+    transition: background-color 0.3s ease;
+}
