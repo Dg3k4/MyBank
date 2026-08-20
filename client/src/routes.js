@@ -1,4 +1,4 @@
-import {Accounts, Admin, Auth, Card, Dashboard, Landing, PinCode, Profile, Transactions, Transfer, Transaction} from "./pages/index.jsx";
+import {Accounts, Admin, Registration, Card, Dashboard, Landing, PinCode, Profile, Transactions, Transfer, Transaction} from "./pages/index.jsx";
 import {
     ADMIN_ROUTE,
     LANDING_ROUTE,
@@ -62,10 +62,10 @@ export const publicRoutes = [
     },
     {
         path: LOGIN_ROUTE,
-        Component: Auth
+        Component: Registration
     },
     {
         path: REGISTRATION_ROUTE,
-        Component: Auth
+        Component: Registration
     },
 ]

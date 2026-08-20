@@ -8,7 +8,7 @@ class ApiError extends Error {
         Error.captureStackTrace(this, this.constructor); // Для чистоты. Первое это то КУДА записать stack. Второе это с какого места НАЧИНАТЬ записывать stack. С ней логи пойдут с самого места ошибки сразу.
     }
 
-    static badRequest(message, errors =  []) {
+    static badRequest(message, errors = []) {
         return new ApiError(400, message, errors);
     }
 
@@ -16,8 +16,8 @@ class ApiError extends Error {
         return new ApiError(500, message);
     }
 
-    static forbidden(message = "Forbidden", []) {
-        return new ApiError(403, message);
+    static forbidden(message = "Forbidden", errors = []) {
+        return new ApiError(403, message, errors);
     }
 
     static unauthorized(message = "Unauthorized") {

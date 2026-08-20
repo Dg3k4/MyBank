@@ -1,4 +1,4 @@
-.navbar {
+.navbar{
     width: 100%;
     background-color: var(--color-primary);
     border-bottom: 1px solid var(--color-primary);
@@ -15,12 +15,13 @@
         grid-template-columns: 1fr 1fr 1fr;
         align-items: center;
         height: 100px;
-        max-width: 80rem;
+        max-width: var(--max-width-standart);
         margin: 0 auto;
-        padding: 0 1rem;
+        padding: var(--padding-sides-page);
     }
 
-    &.scrolled {
+    &.scrolled,
+    &.bank {
         background-color: var(--color-background);
         border-bottom: 1px solid var(--color-border);
 
@@ -148,7 +149,7 @@
             position: relative;
             text-decoration: none;
             color: var(--color-background);
-            transition: 0.3s ease;
+            transition: text-shadow 0.3s ease;
 
             &:hover {
                 text-shadow: 0 0 1rem var(--color-background);
@@ -179,13 +180,14 @@
         display: flex;
         margin-left: auto;
         align-items: center;
+        position: relative;
 
         &__theme {
             position: relative;
             height: 3rem;
             width: 3rem;
             color: var(--color-background);
-            transition: 0.3s ease;
+            transition: var(--transition-standart);
             margin: 0 0.75rem;
 
             &:hover {
@@ -232,6 +234,50 @@
                 color: var(--color-primary);
                 background-color: var(--color-background);
                 filter: drop-shadow(0 0 1.5rem var(--color-shadow));
+            }
+        }
+
+        .burger {
+            height: 3rem;
+            width: 3rem;
+            cursor: pointer;
+            transition: var(--transition-standart);
+            color: var(--color-background);
+
+            &:hover {
+                filter: drop-shadow(0 0 0.5rem var(--color-shadow));
+            }
+        }
+    }
+
+    &.bank {
+        .navbar {
+            &__content {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            &__logo {
+                border-radius: 100%;
+
+                &__pin {
+                    height: 4rem;
+                    width: 4rem;
+                    border-radius: 100%;
+                }
+
+                &__name {
+                    display: none;
+                }
+            }
+
+            &__nav {
+                display: none;
+            }
+
+            &__actions {
+                .myButton {
+                    display: none;
+                }
             }
         }
     }

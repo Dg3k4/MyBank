@@ -1,14 +1,14 @@
 import React from 'react';
 import "./myInput.scss"
 
-const MyInput = ({label, idName, type, onChange, content, required = false}) => {
+const MyInput = ({label, idName, type, onChange, content, placeHolder, className = "", inputClassName = "", required = false}) => {
     return (
-        <div className="field">
+        <div className={`field ${className}`}>
             <label className="field__label" htmlFor={`field__container__${idName}`}>
                 {label}
             </label>
             <div className="field__container">
-                <input id={`field__container__${idName}`} className="field__container__input" type={type} onChange={onChange} required={required}/>
+                <input placeholder={placeHolder} id={`field__container__${idName}`} className={`field__container__input ${inputClassName}`} type={type} onChange={onChange} required={required}/>
                 <div className="field__container">
                     {content}
                 </div>

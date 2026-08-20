@@ -35,7 +35,7 @@ class UserService {
     }
 
     async login({email, password, ip, userAgent}) {
-        const user = await User.findOne({wrehe: {email: email}});
+        const user = await User.findOne({where: {email: email}});
 
         if (!user) {
             throw ApiError.notFound(`User with ${email} not found`)
@@ -53,7 +53,6 @@ class UserService {
     }
 
     async logout(refreshToken) {
-        console.log("Всё работает - Юзер сервис")
         return await tokenService.removeToken(refreshToken)
     }
 
@@ -82,13 +81,10 @@ class UserService {
             await securityService.checkUserBlock(user.id)
         } catch (e) {
             if (e.errors?.[0]?.code === "USER_BLOCKED") {
-                const closeAllSessions = await tokenService.deleteAllRefreshTokens(user.id)
-                console.log(closeAllSessions)
+                await tokenService.deleteAllRefreshTokens(user.id)
             }
-
             throw e
         }
-
         return await tokenService.refreshUserToken(user, validateRefreshToken.payload) // access, refresh
     }
 

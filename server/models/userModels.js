@@ -39,7 +39,7 @@ const UserSecurityState = sequelize.define("userSecurityState", {
     id: {type: DataTypes.UUID, defaultValue: UUIDV4, primaryKey: true},
     loginFailedAttempts: { type: DataTypes.INTEGER, defaultValue: 0 },
     loginBlockLevel: { type: DataTypes.INTEGER, defaultValue: 0 },
-    loginBlockedUntil: { typ0e: DataTypes.DATE },
+    loginBlockedUntil: { type: DataTypes.DATE },
     pinFailedAttempts: { type: DataTypes.INTEGER, defaultValue: 0 },
     pinBlockLevel: { type: DataTypes.INTEGER, defaultValue: 0 },
     pinBlockedUntil: { type: DataTypes.DATE },

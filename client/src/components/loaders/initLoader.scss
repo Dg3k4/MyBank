@@ -1,0 +1,27 @@
+.loader {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    width: 100wh;
+    height: 100hv;
+    z-index: 9999;
+    inset: 0;
+    background-color: var(--color-background);
+    transition: all 0.4s ease;
+    opacity: 1;
+
+    &.hide {
+        opacity: 0;
+    }
+}
+
+@keyframes loaderFade {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}

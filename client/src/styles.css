@@ -10,15 +10,18 @@
     --font-weight-standart: 500;
     --font-size-standart: 1.25rem;
     --transition-standart: all 0.3s ease;
+    --padding-sides-page:  0 1rem;
+    --max-width-standart: 80rem;
+    --border-standart: 1px solid var(--color-border);
 }
 
 [data-theme="dark"] {
     --color-primary: #F05656;
     --color-primary-hover: #FF6B6B;
-    --color-background: #171112;
-    --color-background-substrate: #2A1B1E;
-    --color-text: #FFF7F7;
-    --color-text-dim: #B6A6A8;
-    --color-border: rgba(255, 226, 230, 0.12);
+    --color-background: #121011;
+    --color-background-substrate: #1C1819;
+    --color-text: #FFF9F9;
+    --color-text-dim: #AAA2A4;
+    --color-border: rgba(255, 240, 242, 0.10);
     --color-shadow: rgba(23, 17, 18, 0.75);
 }

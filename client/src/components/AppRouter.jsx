@@ -11,7 +11,7 @@ const AppRouter = () => {
     return (
         <main>
             <Routes>
-                {publicRoutes.map(({path, Component}) =>
+                {!userStore.isAuth && publicRoutes.map(({path, Component}) =>
                     <Route key={path} path={path} element={<Component/>}/>
                 )}
                 {userStore.isAuth && authRoutes.map(({path, Component}) =>
@@ -20,7 +20,7 @@ const AppRouter = () => {
                 {userStore.isAuth && userStore.isPinVerified && pinRoutes.map(({path, Component}) =>
                     <Route key={path} path={path} element={<Component/>}/>
                 )}
-                <Route path="*" element={<Navigate to={userStore.isAuth && !userStore.isPinVerified ? PIN_ROUTE :
+                <Route path="*" replace element={<Navigate to={userStore.isAuth && !userStore.isPinVerified ? PIN_ROUTE :
                     userStore.isAuth && userStore.isPinVerified ? DASHBOARD_ROUTE :
                         LANDING_ROUTE}/>
                 }/>

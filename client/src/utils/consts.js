@@ -10,4 +10,4 @@ export const TRANSFER_ROUTE = "/transfer"
 export const TRANSACTIONS_ROUTE = "/transactions"
 export const CARD_ROUTE = "/card"
 
-export const REACT_APP_API_URL = "http://localhost:4132/api"
+export const REACT_APP_API_URL = "http://localhost:4132/api/"

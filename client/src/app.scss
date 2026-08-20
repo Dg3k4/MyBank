@@ -6,6 +6,38 @@
     box-sizing: border-box;
 }
 
+.app-scroll {
+    .simplebar-scrollbar {
+        display: flex;
+        justify-content: center;
+
+        &::before {
+            background-color: var(--color-text-dim);
+            left: 20%;
+            right: 20%;
+            border-radius: 2px;
+        }
+    }
+
+    .simplebar-scrollbar.simplebar-visible {
+        &::before {
+            left: 20%;
+            right: 20%;
+            border-radius: 2px;
+            opacity: 0.7;
+        }
+    }
+
+    .simplebar-track {
+
+        &.simplebar-vertical {
+            display: flex;
+            justify-content: center;
+            width: 0.9rem;
+        }
+    }
+}
+
 body.modal-open {
     position: relative;
     overflow: hidden;
@@ -13,7 +45,10 @@ body.modal-open {
 
 #root {
     position: relative;
-    height: 310vh;
+}
+
+body {
+    overflow: hidden;
 }
 
 main {
