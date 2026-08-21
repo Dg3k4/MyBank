@@ -1,11 +1,10 @@
 import React from 'react';
-import PinCreate from "../components/pincode/PinCreate.jsx";
-import PinVerify from "../components/pincode/PinVerify.jsx";
+import PinRouter from "../components/pincode/PinRouter.jsx";
 
 const PinCode = () => {
     return (
         <div>
-            <PinVerify/>
+            <PinRouter/>
         </div>
     );
 };

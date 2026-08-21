@@ -48,9 +48,11 @@ class PinService {
 
         const dbPinCode = user.pinHash;
         const isValid = await bcrypt.compare(pinCode, dbPinCode)
+        console.log("чек пина")
         if (!isValid) {
-            await securityService.registerPinAttempt(user.id, false)
-            throw ApiError.badRequest("Wrong PIN", [])
+            const securityState = await securityService.registerPinAttempt(user.id, false)
+            const attemptsLeft = (securityState.pinFailedAttempts === 0 ? 0 : 5 - securityState.pinFailedAttempts) // pinFailedAttempts сбрасывается в 0 только при достижении лимита.
+            throw ApiError.badRequest("Wrong PIN", [{attemptsLeft: attemptsLeft}]) // Поэтому после неудачной попытки 0 означает, что это была 5-я попытка и пользователь заблочен.
         }
         const pinToken = await this.generatePinToken(user, payload.sessionId)
 

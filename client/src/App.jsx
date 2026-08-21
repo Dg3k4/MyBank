@@ -24,7 +24,9 @@ function App() {
     useEffect(() => {
         if (!userStore.isInitializing) {
             setHideLoader(true);
-            console.log("Анимация должна быть") // Вынеси всю логику загрузки при инициализации
+
+            // Вынеси всю логику загрузки при инициализации
+
             setTimeout(() => {
                 setShowLoader(false)
             }, 400)

@@ -1,6 +1,7 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 
 const PinInput = ({onComplete, pinRef, reset}) => {
+    const [failure, setFailure] = useState(false);
     const inputsRef = useRef([]);
 
     const changeHandler = (e, i) => {
@@ -33,20 +34,22 @@ const PinInput = ({onComplete, pinRef, reset}) => {
     }
 
     useEffect(() => {
-        inputsRef.current.map(i => i.value = "")
-        inputsRef.current[0]?.focus()
-        console.log(reset)
+        setFailure(true)
+        setTimeout(() => {
+            setFailure(false)
+            inputsRef.current.forEach(i => i.value = "")
+            inputsRef.current[0]?.focus()
+        }, 250)
     }, [reset])
 
     return (
-        <div className="pin-input">
+        <div className="pin-input" onClick={focusHandler}>
             {Array.from({length: 6}).map((a, i) => (
                 <input key={i} maxLength={1} inputMode="numeric" type="password"
                        ref={el => {inputsRef.current[i] = el}}
                        onChange={el => changeHandler(el, i)}
                        onKeyDown={el => keyDownHandler(el, i)}
-                       onClick={focusHandler}
-                       className={`pin-input${i <= 2 ? "__up" : "__down"}`}
+                       className={`pin-input__field${failure ? " fail" : ""}`}
                 />
             ))}
         </div>

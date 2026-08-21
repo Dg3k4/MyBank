@@ -31,7 +31,8 @@ class SecurityService {
                 securityState.pinBlockLevel += 1
             }
         }
-        return await securityState.save();
+        await securityState.save();
+        return securityState
     }
 
     async checkUserPinBlock(userId) {

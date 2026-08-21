@@ -18,7 +18,7 @@ export default class AuthService {
     }
 
     static async pinVerify(pinCode) {
-        return false
+        return Promise.reject(new Error("Wrong PIN"))
         // return $authApi.post("user/pin/verify", {pinCode})
     }
 

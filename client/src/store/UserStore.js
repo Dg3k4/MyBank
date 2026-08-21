@@ -123,7 +123,7 @@ export default class UserStore {
         this.setIsInitializing(true)
         try {
             await AuthService.pinCreate({pinCode})
-            this.isPinVerified(true)
+            this.setIsPinVerified(true)
         } catch (e) {
             console.log(e.response?.data?.message)
             throw e.response
@@ -137,7 +137,8 @@ export default class UserStore {
         this.setIsInitializing(true)
         try {
             await AuthService.pinVerify({pinCode})
-            this.isPinVerified(true)
+            this.setIsPinVerified(true)
+            await this.sleep(300)
         } catch (e) {
             console.log(e.response?.data?.message)
             throw e.response
