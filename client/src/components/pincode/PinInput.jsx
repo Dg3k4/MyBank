@@ -1,6 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
 
-const PinInput = ({onComplete, pinRef, reset}) => {
+const PinInput = ({onComplete, pinRef, reset, nonFailure}) => {
     const [failure, setFailure] = useState(false);
     const inputsRef = useRef([]);
 
@@ -34,12 +34,14 @@ const PinInput = ({onComplete, pinRef, reset}) => {
     }
 
     useEffect(() => {
-        setFailure(true)
+        if (!nonFailure) {
+            setFailure(true)
+        }
         setTimeout(() => {
             setFailure(false)
             inputsRef.current.forEach(i => i.value = "")
             inputsRef.current[0]?.focus()
-        }, 250)
+        }, !nonFailure ? 250 : 0)
     }, [reset])
 
     return (

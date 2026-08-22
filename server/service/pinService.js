@@ -48,7 +48,6 @@ class PinService {
 
         const dbPinCode = user.pinHash;
         const isValid = await bcrypt.compare(pinCode, dbPinCode)
-        console.log("чек пина")
         if (!isValid) {
             const securityState = await securityService.registerPinAttempt(user.id, false)
             const attemptsLeft = (securityState.pinFailedAttempts === 0 ? 0 : 5 - securityState.pinFailedAttempts) // pinFailedAttempts сбрасывается в 0 только при достижении лимита.

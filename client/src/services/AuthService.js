@@ -13,13 +13,12 @@ export default class AuthService {
         return $authApi.post("user/logout")
     }
 
-    static async pinCreate(pinCode) {
+    static async pinCreate({pinCode}) {
         return $authApi.post("user/pin", {pinCode})
     }
 
-    static async pinVerify(pinCode) {
-        return Promise.reject(new Error("Wrong PIN"))
-        // return $authApi.post("user/pin/verify", {pinCode})
+    static async pinVerify({pinCode}) {
+        return $authApi.post("user/pin/verify", {pinCode})
     }
 
     static async refresh() {

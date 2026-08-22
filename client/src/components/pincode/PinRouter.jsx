@@ -18,7 +18,8 @@ const PinRouter = () => {
     return (
         <div className="pin">
             {create
-                ? <PinCreate/>
+                ? <PinCreate pinRef={pinRef} formRef={formRef} greeting={greeting}
+                             userStore={userStore} resetForm={resetForm} setResetForm={setResetForm}/>
                 : <PinVerify pinRef={pinRef} formRef={formRef} greeting={greeting}
                              userStore={userStore} resetForm={resetForm} setResetForm={setResetForm}/>
             }
