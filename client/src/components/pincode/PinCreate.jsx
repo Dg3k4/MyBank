@@ -5,7 +5,7 @@ import PinAttention from "./PinAttention.jsx";
 
 const PinCreate = ({greeting, formRef, pinRef, userStore, resetForm, setResetForm}) => {
     const [step, setStep] = useState("FIRST_PIN")
-    const [nonFailure, setNonFailure] = useState(false)
+    const [nonFailure, setNonFailure] = useState(true)
     const firstPinRef = useRef("");
 
     const createPinMessage = () => {
@@ -27,10 +27,10 @@ const PinCreate = ({greeting, formRef, pinRef, userStore, resetForm, setResetFor
         if (step === "FIRST_PIN" || step === "RE_FIRST_PIN") {
             firstPinRef.current = pinRef.current
             setStep("COMPARE_PIN")
-            setNonFailure(true)
             setTimeout(() => {
                 setNonFailure(false)
             }, 250)
+            setNonFailure(false)
             setResetForm(prev => prev + 1)
             return;
         }
@@ -41,7 +41,6 @@ const PinCreate = ({greeting, formRef, pinRef, userStore, resetForm, setResetFor
                 setResetForm(prev => prev + 1)
                 return;
             }
-            console.log("Поздравляю, пинкод успешно создан и все сообщения посути должны быть видны. Убери появление красной обводки при первом введении пина и оставь только при НЕСОВПАДЕНИИ кодов.")
             try {
                 console.log(pinRef)
                 await userStore.pinCreate({pinCode: pinRef.current})

@@ -14,15 +14,15 @@ const AppRouter = () => {
                 {!userStore.isAuth && publicRoutes.map(({path, Component}) =>
                     <Route key={path} path={path} element={<Component/>}/>
                 )}
-                {userStore.isAuth && authRoutes.map(({path, Component}) =>
+                {userStore.isAuth && !userStore.isPinVerified && authRoutes.map(({path, Component}) =>
                     <Route key={path} path={path} element={<Component/>}/>
                 )}
                 {userStore.isAuth && userStore.isPinVerified && pinRoutes.map(({path, Component}) =>
                     <Route key={path} path={path} element={<Component/>}/>
                 )}
-                <Route path="*" replace element={<Navigate to={userStore.isAuth && !userStore.isPinVerified ? PIN_ROUTE :
-                    userStore.isAuth && userStore.isPinVerified ? DASHBOARD_ROUTE :
-                        LANDING_ROUTE}/>
+                <Route path="*" replace element={<Navigate to={!userStore.isAuth? LANDING_ROUTE :
+                    !userStore.isPinVerified ? PIN_ROUTE :
+                        DASHBOARD_ROUTE}/>
                 }/>
             </Routes>
         </main>

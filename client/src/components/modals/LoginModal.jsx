@@ -28,7 +28,7 @@ const LoginModal = ({close}) => {
             await userStore.login({email: emailRef.current, password: passwordRef.current})
             close()
 
-            navigate("/dashboard")
+            navigate("/pin")
         } catch (e) {
             console.log(e)
         }

@@ -1,4 +1,4 @@
-import {$api, $authApi} from '../http/index.js'
+import {$api, $authApi, $refreshApi} from '../http/index.js'
 
 export default class AuthService {
     static async login({email, password}) {
@@ -22,6 +22,6 @@ export default class AuthService {
     }
 
     static async refresh() {
-        return $authApi.post("user/refresh")
+        return $refreshApi.post("user/refresh")
     }
 }

@@ -134,9 +134,9 @@ export default class UserStore {
     }
 
     async pinVerify({pinCode}) {
-        this.setIsInitializing(true)
         try {
             await AuthService.pinVerify({pinCode})
+            this.setIsInitializing(true)
             this.setIsPinVerified(true)
             await this.sleep(300)
         } catch (e) {

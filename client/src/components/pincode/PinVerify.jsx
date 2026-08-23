@@ -2,15 +2,24 @@ import {useState} from 'react';
 import PinInput from "./PinInput.jsx";
 import "./pin.scss"
 import PinAttention from "./PinAttention.jsx";
+import {useNavigate} from "react-router-dom";
 
 const PinVerify = ({greeting, formRef, pinRef, userStore, resetForm, setResetForm}) => {
     const [attemptsLeft, setAttemptsLeft] = useState(0);
     const [blockState, setBlockState] = useState(false);
+    const [isChecking, setIsChecking] = useState(false)
+    const navigate = useNavigate();
+
+    const triesMessage = attemptsLeft === 5 ? "попыток" : attemptsLeft !== 1 ? "попытки" : "попытка"
 
     const submitHandler = async (ev) => {
         ev.preventDefault()
+        if (isChecking) {return;}
+        document.activeElement.blur()
+        setIsChecking(true)
         try {
             await userStore.pinVerify({pinCode: pinRef.current})
+            navigate("/dashboard")
         } catch (e) {
             setResetForm(prev => prev + 1)
             const error = e.data?.errors?.[0]
@@ -18,6 +27,8 @@ const PinVerify = ({greeting, formRef, pinRef, userStore, resetForm, setResetFor
                 setBlockState(true)
             }
             setAttemptsLeft(error?.attemptsLeft)
+        } finally {
+            setIsChecking(false)
         }
     }
 
@@ -30,10 +41,10 @@ const PinVerify = ({greeting, formRef, pinRef, userStore, resetForm, setResetFor
                 </div>
                 <PinAttention show={attemptsLeft > 0 || blockState} animationKey={`${attemptsLeft}`}>
                     {blockState || attemptsLeft === 0
-                        ? "Ввод PIN-кода временно заблокирован" // Пока делай компонент для создания пинкода и как сделаешь, прикручивай действительно ответ сервера
-                        : attemptsLeft > 0 ? `Введён неверный PIN-код. У вас осталось ${attemptsLeft} попыток` : ""}
+                        ? "Ввод PIN-кода временно заблокирован"
+                        : attemptsLeft > 0 ? `Введён неверный PIN-код. У вас осталось ${attemptsLeft} ${triesMessage}` : ""}
                 </PinAttention>
-                <form className="pin__main" ref={formRef} onSubmit={submitHandler}>
+                <form className={`pin__main${isChecking ? " checking" : ""}`} ref={formRef} onSubmit={submitHandler}>
                     <PinInput onComplete={() => formRef.current?.requestSubmit()} pinRef={pinRef} reset={resetForm}/>
                 </form>
                 <div className="pin__forgot">

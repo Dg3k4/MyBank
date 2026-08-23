@@ -22,8 +22,11 @@ function App() {
          userStore.checkAuth()
     }, [])
     useEffect(() => {
-        if (!userStore.isInitializing) {
-            setHideLoader(true);
+        if (userStore.isInitializing) {
+            setHideLoader(false)
+            setShowLoader(true)
+        } else {
+            setHideLoader(true)
 
             // Вынеси всю логику загрузки при инициализации
 
