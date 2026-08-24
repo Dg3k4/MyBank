@@ -59,7 +59,7 @@ class PinService {
         return {pinToken: pinToken}
     }
 
-    async verifyPinToken(pinToken, userId, sessionId) {
+    async verifyPinToken({pinToken, userId, sessionId}) {
         if (!pinToken) {
             throw ApiError.forbidden("PIN is missing", [])
         }
@@ -76,6 +76,13 @@ class PinService {
         }
 
         return payload
+    }
+
+    async refreshPin({pinToken, userId, sessionId}) {
+        await this.verifyPinToken({pinToken: pinToken, userId: userId, sessionId: sessionId})
+        const user = await userService.getUserById(userId)
+        const refresh = await this.generatePinToken(user, sessionId)
+        return {newPinToken: refresh}
     }
 
     async updatePin(newPinCode, oldPinCode, refreshToken) {

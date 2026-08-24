@@ -12,7 +12,7 @@ export default async function (req, res, next) {
             return next(ApiError.forbidden("Identity not approved by pin", []))
         }
 
-        await pinService.verifyPinToken(pinToken, user.id, user.sessionId)
+        await pinService.verifyPinToken({pinToken: pinToken, userId: user.id, sessionId: user.sessionId})
         const newPinToken = await pinService.generatePinToken(user, user.sessionId)
 
         res.cookie("pinToken", newPinToken, {httpOnly: true, sameSite: "strict", maxAge: 3 * 60 * 1000})

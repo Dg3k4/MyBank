@@ -10,14 +10,12 @@ const PinRouter = () => {
     const pinRef = useRef("")
     const {userStore} = useContext(Context)
 
-    const create = false
-
     const hourNow = new Date().getHours()
     const greeting = hourNow < 6 ? "Добрый вечер" : hourNow < 12 ? "Доброе утро" : hourNow < 18 ?"Добрый день" : "Добрый вечер"
 
     return (
         <div className="pin">
-            {create
+            {!userStore.user.hasPin
                 ? <PinCreate pinRef={pinRef} formRef={formRef} greeting={greeting}
                              userStore={userStore} resetForm={resetForm} setResetForm={setResetForm}/>
                 : <PinVerify pinRef={pinRef} formRef={formRef} greeting={greeting}

@@ -20,7 +20,7 @@ $authApi.interceptors.request.use((config) => {
     return config;
 })
 
-$authApi.interceptors.response.use(
+$authApi.interceptors.response.use( // Интерцептор для рефреша при ошибке 401 для получения свежего access токена
     response => response,
     async error => {
         const originalRequest = error.config

@@ -83,6 +83,19 @@ class UserController {
             next(e)
         }
     }
+
+    async pinCheck(req, res, next) {
+        try {
+            const {pinToken} = req.cookies
+            const {id, sessionId} = req.user
+
+            const refreshPin = await pinService.refreshPin({pinToken: pinToken, userId: id, sessionId: sessionId})
+            res.cookie("pinToken", refreshPin.newPinToken, {httpOnly: true, maxAge: 3 * 60 * 1000, sameSite: "strict"})
+            return res.json({message: "PIN has been checked successfully"})
+        } catch(e) {
+            next(e)
+        }
+    }
 }
 
 export default new UserController();

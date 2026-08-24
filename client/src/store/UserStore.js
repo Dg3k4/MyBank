@@ -1,5 +1,6 @@
 import {makeAutoObservable} from "mobx"
 import AuthService from "../services/AuthService"
+import pinCode from "../pages/PinCode.jsx";
 
 export default class UserStore {
     constructor() {
@@ -91,18 +92,22 @@ export default class UserStore {
         }
     }
 
-    async checkAuth() {
+    async initialize() {
         this.setIsInitializing(true)
         try {
             const response = await AuthService.refresh()
             localStorage.setItem("token", response.data.accessToken)
             this.setIsAuth(true)
             this.setUser(response.data.user)
+            try {
+                await this.pinCheck()
+            } catch (_) {}
         } catch (e) {
-            console.log(e.response?.data?.message)
-            throw e.response
+            localStorage.removeItem("token")
+            this.setIsAuth(false)
+            this.setIsPinVerified(false)
+            this.setUser({})
         } finally {
-            await this.sleep(300)
             this.setIsInitializing(false)
         }
     }
@@ -145,5 +150,22 @@ export default class UserStore {
         } finally {
             this.setIsInitializing(false)
         }
+    }
+
+    async pinCheck() {
+        this.setIsInitializing(true)
+        try {
+            await AuthService.pinCheck()
+            this.setIsPinVerified(true)
+        } catch (e) {
+            this.setIsPinVerified(false)
+            console.log(e.response?.data?.message)
+            throw e.response
+        } finally {
+            await this.sleep(300)
+            this.setIsInitializing(false)
+        }
+        // Сделай здесь функцию для проверки на наличие пинТокена(и его валидность) при загрузке на сайт, как рефреш.
+        // Дальше в апп, через эффект. Сам всё знаешь.
     }
 }

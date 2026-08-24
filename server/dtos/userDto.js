@@ -5,6 +5,7 @@ export default class UserDTO {
     isActivated;
     roles;
     sessionId;
+    hasPin;
 
     constructor(model, roles = [], tokenId) {
         this.id = model.id;
@@ -16,5 +17,6 @@ export default class UserDTO {
             return i.role
         })
         this.sessionId = tokenId
+        this.hasPin = !!model.pinHash
     }
 }

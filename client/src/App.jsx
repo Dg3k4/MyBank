@@ -19,7 +19,7 @@ function App() {
     document.documentElement.dataset.theme = userStore.themeInfo === "dark" ? "dark" : "";
 
     useEffect(() => {
-         userStore.checkAuth()
+        userStore.initialize()
     }, [])
     useEffect(() => {
         if (userStore.isInitializing) {

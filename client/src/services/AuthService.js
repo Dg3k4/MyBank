@@ -21,6 +21,10 @@ export default class AuthService {
         return $authApi.post("user/pin/verify", {pinCode})
     }
 
+    static async pinCheck() {
+        return $authApi.post("user/pin/check")
+    }
+
     static async refresh() {
         return $refreshApi.post("user/refresh")
     }

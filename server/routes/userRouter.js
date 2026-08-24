@@ -26,6 +26,7 @@ router.use(blockMiddleware)
 
 router.post("/pin", ...pinValidation, userController.pinCreate)
 router.post("/pin/verify", ...pinValidation, authController.pinVerify)
+router.post("/pin/check", userController.pinCheck)
 
 // Нужна авторизация + отсутствие блокировки + подтверждение личности
 router.use(verifyPinMiddleware)

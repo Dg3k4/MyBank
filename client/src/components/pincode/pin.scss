@@ -32,7 +32,7 @@
         border: var(--border-standart);
         border-radius: 0.35rem;
         background-color: var(--color-background);
-        filter: drop-shadow(0 0 2rem var(--color-border));
+        filter: drop-shadow(0 0 2rem var(--color-panel-shadow));
         transition: var(--transition-standart);
         color: var(--color-text);
     }

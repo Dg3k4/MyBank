@@ -2,11 +2,13 @@
     --color-primary: #F05656;
     --color-primary-hover: #DC4747;
     --color-background: #FBF6F6;
+    --color-surface: #FFFDFD;
     --color-background-substrate: #F4E5E7;
     --color-text: #191314;
     --color-text-dim: #756769;
     --color-border: rgba(89, 39, 45, 0.12);
     --color-shadow: rgba(251, 246, 246, 0.5);
+    --color-panel-shadow: var(--color-border);
     --font-weight-standart: 500;
     --font-size-standart: 1.25rem;
     --transition-standart: all 0.3s ease;
@@ -18,10 +20,12 @@
 [data-theme="dark"] {
     --color-primary: #F05656;
     --color-primary-hover: #FF6B6B;
-    --color-background: #121011;
+    --color-background: #111012;
+    --color-surface: #161416;
     --color-background-substrate: #1C1819;
     --color-text: #FFF9F9;
     --color-text-dim: #AAA2A4;
-    --color-border: rgba(255, 240, 242, 0.07);
+    --color-border: rgba(255, 240, 242, 0.06);
     --color-shadow: rgba(23, 17, 18, 0.75);
+    --color-panel-shadow: var(--color-surface);
 }
