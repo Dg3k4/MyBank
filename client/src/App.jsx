@@ -6,7 +6,6 @@ import "./styles.css"
 import {useContext, useEffect, useState} from "react";
 import {Context} from "./context.js";
 import {observer} from "mobx-react-lite";
-import PatternBackground from "./components/background/PatternBackground.jsx";
 import SimpleBar from "simplebar-react";
 import "simplebar-react/dist/simplebar.min.css";
 import InitLoader from "./components/loaders/InitLoader.jsx";
@@ -40,7 +39,7 @@ function App() {
         <BrowserRouter>
             {showLoader && <InitLoader hide={hideLoader}/>}
             <Navbar />
-            <SimpleBar className="app-scroll" style={{height: "calc(100vh - 101px)"}}>
+            <SimpleBar className="app-scroll" style={{height: "calc(100vh - 4rem)"}}>
                 <AppRouter />
             </SimpleBar>
         </BrowserRouter>

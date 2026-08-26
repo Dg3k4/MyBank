@@ -2,19 +2,21 @@
     width: 100%;
     background-color: var(--color-primary);
     border-bottom: 1px solid var(--color-primary);
+    box-shadow: 0 6px 40px -5px var(--color-panel-shadow);
     transition: 0.3s ease;
     font-family: "Manrope", sans-serif;
     font-weight: var(--font-weight-standart);
-    font-size: 1.35rem;
+    font-size: 1.2rem;
     z-index: 5;
     position: sticky;
     top: 0;
+    overflow: hidden;
 
     &__content {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         align-items: center;
-        height: 100px;
+        height: var(--navdar-height);
         max-width: var(--max-width-standart);
         margin: 0 auto;
         padding: var(--padding-sides-page);
@@ -107,7 +109,7 @@
         margin-right: auto;
         font-family: "Space Grotesk", sans-serif;
         color: var(--color-background);
-        font-size: 2rem;
+        font-size: 1.75rem;
         font-weight: 600;
         position: relative;
 
@@ -129,8 +131,8 @@
         }
 
         &__pin {
-            height: 3.5rem;
-            width: 3.5rem;
+            height: 3rem;
+            width: 3rem;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -184,8 +186,8 @@
 
         &__theme {
             position: relative;
-            height: 3rem;
-            width: 3rem;
+            height: 2.8rem;
+            width: 2.8rem;
             color: var(--color-background);
             transition: var(--transition-standart);
             margin: 0 0.75rem;
@@ -227,7 +229,7 @@
         }
 
         .myButton {
-            height: 85%;
+            height: 75%;
             width: 8rem;
 
             &:hover {
@@ -254,14 +256,17 @@
         .navbar {
             &__content {
                 grid-template-columns: 1fr 1fr;
+                max-width: var(--max-width-bank);
+                width: 100%;
+                height: 65px;
             }
 
             &__logo {
                 border-radius: 100%;
 
                 &__pin {
-                    height: 4rem;
-                    width: 4rem;
+                    height: 3.5rem;
+                    width: 3.5rem;
                     border-radius: 100%;
                 }
 
@@ -277,6 +282,11 @@
             &__actions {
                 .myButton {
                     display: none;
+                }
+
+                &__theme__icon {
+                    height: 3rem;
+                    width: 3rem;
                 }
             }
         }

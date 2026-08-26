@@ -12,9 +12,12 @@
     --font-weight-standart: 500;
     --font-size-standart: 1.25rem;
     --transition-standart: all 0.3s ease;
-    --padding-sides-page:  0 1rem;
+    --padding-sides-page: 0 1rem;
     --max-width-standart: 80rem;
+    --max-width-bank: 145rem;
     --border-standart: 1px solid var(--color-border);
+    --navdar-height: 4rem;
+
 }
 
 [data-theme="dark"] {
