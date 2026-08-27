@@ -6,7 +6,7 @@
     transition: 0.3s ease;
     font-family: "Manrope", sans-serif;
     font-weight: var(--font-weight-standart);
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     z-index: 5;
     position: sticky;
     top: 0;
@@ -109,7 +109,7 @@
         margin-right: auto;
         font-family: "Space Grotesk", sans-serif;
         color: var(--color-background);
-        font-size: 1.75rem;
+        font-size: 1.6rem;
         font-weight: 600;
         position: relative;
 
@@ -131,8 +131,8 @@
         }
 
         &__pin {
-            height: 3rem;
-            width: 3rem;
+            height: 2.75rem;
+            width: 2.75rem;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -186,8 +186,8 @@
 
         &__theme {
             position: relative;
-            height: 2.8rem;
-            width: 2.8rem;
+            height: 2.65rem;
+            width: 2.65rem;
             color: var(--color-background);
             transition: var(--transition-standart);
             margin: 0 0.75rem;
@@ -229,8 +229,8 @@
         }
 
         .myButton {
-            height: 75%;
-            width: 8rem;
+            height: 70%;
+            width: 7.5rem;
 
             &:hover {
                 color: var(--color-primary);
